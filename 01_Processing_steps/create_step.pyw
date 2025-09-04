@@ -1,0 +1,89 @@
+import os
+import sys
+import shutil
+import re
+import tkinter as tk
+from tkinter import simpledialog
+from datetime import datetime
+from dotenv import dotenv_values
+
+env_vars = dotenv_values()
+
+def create_processing_step():
+    # Set working directory to the script's directory
+    os.chdir(os.path.dirname(os.path.abspath(sys.argv[0])))
+    
+    # Create root window and hide it
+    root = tk.Tk()
+    root.withdraw()
+
+    # Show input dialog
+    step_name = simpledialog.askstring("New Processing Step", "Enter the name of the new processing step:")
+    
+    # Exit if user cancels
+    if not step_name:
+        print("Operation cancelled")
+        return
+
+    # Clean up step name if it contains '='
+    if '=' in step_name:
+        step_name = step_name.split('=')[1].strip('"')
+
+    # Define paths
+    template_path = env_vars["TEMPLATE_PROCESSING_STEP_FOLDER_PATH"]
+    current_dir = os.getcwd()
+
+    # Find highest step number
+    existing_steps = [d for d in os.listdir(current_dir) if os.path.isdir(d) and re.match(r'^\d{2}_', d)]
+    next_number = 0 if not existing_steps else int(max(existing_steps)[0:2]) + 1
+
+    # Create new folder name
+    new_folder_name = f"{next_number:02d}_{step_name}"
+    new_folder_path = os.path.join(current_dir, new_folder_name)
+
+    # Copy template folder to new location
+    shutil.copytree(template_path, new_folder_path)
+
+    # Walk through the new folder and replace PLACEHOLDER
+    for root, dirs, files in os.walk(new_folder_path):
+        # Rename directories containing PLACEHOLDER
+        for dir_name in dirs:
+            if 'PLACEHOLDER' in dir_name:
+                old_path = os.path.join(root, dir_name)
+                new_path = os.path.join(root, dir_name.replace('PLACEHOLDER', step_name))
+                os.rename(old_path, new_path)
+        
+        # Rename files and replace content
+        for file_name in files:
+            file_path = os.path.join(root, file_name)
+            
+            # Rename file if needed
+            if 'PLACEHOLDER' in file_name:
+                new_file_path = os.path.join(root, file_name.replace('PLACEHOLDER', step_name))
+                os.rename(file_path, new_file_path)
+                file_path = new_file_path
+            
+            # Replace content in files
+            try:
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    content = file.read()
+                
+                if 'PLACEHOLDER' in content:
+                    content = content.replace('PLACEHOLDER', step_name)
+                    with open(file_path, 'w', encoding='utf-8') as file:
+                        file.write(content)
+
+                if 'CURRENT_DATE' in content:
+                    current_date = datetime.now().strftime("%Y-%m-%d")
+                    content = content.replace('CURRENT_DATE', current_date)
+                    with open(file_path, 'w', encoding='utf-8') as file:
+                        file.write(content)
+
+            except UnicodeDecodeError:
+                # Skip binary files
+                continue
+
+    print(f"Created new processing step: {new_folder_name}")
+
+if __name__ == "__main__":
+    create_processing_step()
