@@ -2,11 +2,19 @@
 
 ## Info
 Author: Tomer Peled (Tomer.Peled@Wur.nl)
-Date: 
+Date: 04/09/2025
 
-## Folders
-**00_Supplied_data**: Supplied data received from various sources. Untouched
-**01_Processing_steps:**: A collection of processing steps to get from the supplied data to the desired output. Each folder contains a Jupyter notebook for the data transformation and the output of the notebook.
-**02_Exports**: All the exports for the project. Could be data, maps, etc.
-**03_Software**: A map for software, like an Arcgis / QGIS project.
-**04_Docs**: All kinds of documents relating to the project. Like meeting notes, emails, etc.
+This project aims to create a program that acts as a project manager for my personal projects.
+
+## Functions
+
+### New project creation
+- Create a new project from a chosen template folder.
+- Template folder: Contains folders and files.
+- Any text 'PROJECT_NAME', either in a file/folder name or file content, will be replaced with the user given project name.
+- Any text 'CURRENT_DATA' will be replaced with the current date.
+
+### Project management
+- Allows user to sync project with the template folder, so that changes to the template are reflected in the projects
+- Allows user to zip projects for sharing. Which automatically removes the .env and creates a .env.example file. 
+- Allows user to archive projects, which zips the project and moves it to the archive, sorted by date.
