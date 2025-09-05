@@ -7,8 +7,8 @@ from pathlib import Path
 from create_project import create_project
 
 def create_project_window():
-    def browse_directory(entry):
-        directory = filedialog.askdirectory()
+    def browse_directory(entry, initial_dir=None):
+        directory = filedialog.askdirectory(initialdir=initial_dir)
         if directory:
             entry.delete(0, tk.END)
             entry.insert(0, directory)
@@ -44,8 +44,10 @@ def create_project_window():
     template_dir_label = tk.Label(root, text="Template Directory:")
     template_dir_label.grid(row=1, column=0, padx=10, pady=5, sticky="e")
     template_dir_entry = tk.Entry(root, width=40)
+    default_template_dir = str(Path(__file__).resolve().parent.parent / "template_folders")
+    template_dir_entry.insert(0, default_template_dir)  # Set default directory to project base folder
     template_dir_entry.grid(row=1, column=1, padx=10, pady=5)
-    template_dir_browse = tk.Button(root, text="Browse", command=lambda: browse_directory(template_dir_entry))
+    template_dir_browse = tk.Button(root, text="Browse", command=lambda: browse_directory(template_dir_entry, default_template_dir))
     template_dir_browse.grid(row=1, column=2, padx=10, pady=5)
 
     # Git initialization checkbox
