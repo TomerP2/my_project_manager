@@ -33,8 +33,9 @@ def create_project_window():
         except Exception as e:
             messagebox.showerror("Error", str(e))
             
+    print(os.getcwd())
     # Get settings from settings.json
-    with open(r"./settings.json", "r") as f:
+    with open(r"./Code/settings.json", "r") as f:
         settings = json.load(f)
 
     # Create the main application window
@@ -48,7 +49,7 @@ def create_project_window():
     default_directory = settings["default projects folder"]
     directory_entry.insert(0, default_directory)  # Set default directory
     directory_entry.grid(row=0, column=1, padx=10, pady=5)
-    directory_browse = tk.Button(root, text="Browse", command=lambda: browse_directory(directory_entry))
+    directory_browse = tk.Button(root, text="Browse", command=lambda: browse_directory(directory_entry, default_directory))
     directory_browse.grid(row=0, column=2, padx=10, pady=5)
 
     # Project name input
