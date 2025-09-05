@@ -1,7 +1,7 @@
 # PLACEHOLDER
 
 ## Info
-Author: Tomer Peled (Tomer.Peled@Wur.nl)
+Author: Tomer Peled (Tomer.a.peled@gmail.com)
 Date: 04/09/2025
 
 This project aims to create a program that acts as a project manager for my personal projects.
