@@ -1,5 +1,6 @@
 from pathlib import Path
 import shutil
+import os
 
 def archive_project(project_path: Path, archive_path: Path):
     """
@@ -21,6 +22,12 @@ def archive_project(project_path: Path, archive_path: Path):
     shutil.make_archive(str(zip_file_path.with_suffix('')), 'zip', str(project_path))
 
     # Step 2: Delete the original project folder
-    shutil.rmtree(project_path)
+    os.system('rmdir /S /Q "{}"'.format(str(project_path)))
 
     print(f"Project {project_path.name} has been archived to {zip_file_path}.")
+    
+if __name__ == "__main__":
+    # Example usage
+    project_to_archive = Path(r"C:\Users\tomer\OneDrive\Home\Projects\test1")
+    archive_destination = Path(r"C:\Users\tomer\OneDrive\Home\Archive\2025")
+    archive_project(project_to_archive, archive_destination)
