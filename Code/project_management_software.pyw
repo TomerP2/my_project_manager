@@ -3,6 +3,8 @@ import tkinter as tk
 
 # Internal imports
 from create_project_window import create_project_window
+from archive_project_window import archive_project_window
+from settings_window import settings_window
 
 def main_window():
     # Create the main application window
@@ -12,7 +14,15 @@ def main_window():
 
     # Create New Project button
     create_project_button = tk.Button(root, text="Create New Project", command=create_project_window)
-    create_project_button.pack(pady=20)
+    create_project_button.pack(pady=10)
+    
+    # Create archive project button
+    archive_project_button = tk.Button(root, text="Archive Project", command=archive_project_window)
+    archive_project_button.pack(pady=10)
+
+    # Create settings button
+    settings_button = tk.Button(root, text="Settings", command=settings_window)
+    settings_button.pack(pady=10)
 
     # Run the application
     root.mainloop()
