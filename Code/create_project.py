@@ -2,96 +2,49 @@ import shutil
 import os
 from pathlib import Path
 import sys
-import tkinter as tk
-from tkinter import messagebox
 import subprocess
-from dotenv import dotenv_values
 
-env_vars = dotenv_values()
-
-def create_project():
-    project_name = entry.get().strip()
-    
-    if not project_name:
-        messagebox.showerror("Error", "Please enter a project name")
-        return
+def create_project(project_path: Path, template_dir: Path, use_git: bool) -> None:
+    if not project_path:
+        raise ValueError("Project path cannot be empty.")
 
     # Set working directory to the script's directory
     os.chdir(os.path.dirname(os.path.abspath(sys.argv[0])))
     
-    template_dir = Path(env_vars["TEMPLATE_PROJECT_FOLDER_PATH"])
-    projects_dir = Path(env_vars["PROJECTS_FOLDER"]) 
-    new_dir = projects_dir / project_name 
-
-    # === Ensure Projects directory exists ===
-    if not projects_dir.exists():
-        projects_dir.mkdir(parents=True)
-
     # === Copy template folder ===
     if not template_dir.exists():
-        messagebox.showerror("Error", f"Template directory '{template_dir}' not found.")
-        return
+        raise FileNotFoundError(f"Template directory '{template_dir}' not found.")
+    if project_path.exists():
+        raise FileExistsError(f"Project directory '{project_path}' already exists.")
 
-    if new_dir.exists():
-        messagebox.showerror("Error", f"Target directory '{new_dir}' already exists.")
-        return
-
-    shutil.copytree(template_dir, new_dir)
+    shutil.copytree(template_dir, project_path)
 
     # === Rename folders containing 'PLACEHOLDER' (deepest first) ===
-    for folder in sorted(new_dir.rglob("*"), key=lambda p: -p.relative_to(new_dir).parts.__len__()):
+    for folder in sorted(project_path.rglob("*"), key=lambda p: -p.relative_to(project_path).parts.__len__()):
         if folder.is_dir() and "PLACEHOLDER" in folder.name:
-            new_name = folder.name.replace("PLACEHOLDER", project_name)
+            new_name = folder.name.replace("PLACEHOLDER", project_path.name)
             folder.rename(folder.with_name(new_name))
 
     # === Rename files containing 'PLACEHOLDER' ===
-    for file in new_dir.rglob("*"):
+    for file in project_path.rglob("*"):
         if file.is_file() and "PLACEHOLDER" in file.name:
-            new_name = file.name.replace("PLACEHOLDER", project_name)
+            new_name = file.name.replace("PLACEHOLDER", project_path.name)
             file.rename(file.with_name(new_name))
             
     # === Replace 'PROJECT_PATH_PLACEHOLDER' in .env file ===
-    env_example_path = new_dir / ".env"
+    env_example_path = project_path / ".env"
     if env_example_path.exists():
         with open(env_example_path, "r") as file:
             content = file.read()
-        content = content.replace("PROJECT_PATH_PLACEHOLDER", str(new_dir.resolve()).replace("\\", "/"))
+        content = content.replace("PROJECT_PATH_PLACEHOLDER", str(project_path.resolve()).replace("\\", "/"))
         with open(env_example_path, "w") as file:
             file.write(content)
                     
     # === Create a new git repository in project directory ===
-    try:
-        subprocess.run(["git", "init"], cwd=new_dir, check=True)
-        subprocess.run(["git", "add", "."], cwd=new_dir, check=True)
-        subprocess.run(["git", "commit", "-m", "Initial commit"], cwd=new_dir, check=True)
-    except Exception as e:
-        messagebox.showerror("Error", f"Failed to initialize Git repository: {e}")
-        return
-    
-    messagebox.showinfo("Success", f"Project folder created: {new_dir}")
-    root.destroy()
-
-# Create the main window
-root = tk.Tk()
-root.title("Create Project")
-root.geometry("400x150")
-
-# Create and pack widgets
-label = tk.Label(root, text="Enter Project Name:", font=("Arial", 12))
-label.pack(pady=10)
-
-entry = tk.Entry(root, font=("Arial", 12), width=30)
-entry.pack(pady=10)
-
-create_button = tk.Button(root, text="Create Project", command=create_project, font=("Arial", 11))
-create_button.pack(pady=10)
-
-# Center the window
-root.update_idletasks()
-width = root.winfo_width()
-height = root.winfo_height()
-x = (root.winfo_screenwidth() // 2) - (width // 2)
-y = (root.winfo_screenheight() // 2) - (height // 2)
-root.geometry(f'{width}x{height}+{x}+{y}')
-
-root.mainloop()
+    if use_git:    
+        try:
+            subprocess.run(["git", "init"], cwd=project_path, check=True)
+            subprocess.run(["git", "add", "."], cwd=project_path, check=True)
+            subprocess.run(["git", "commit", "-m", "Initial commit"], cwd=project_path, check=True)
+        except Exception as e:
+            print(f"Warning: Git initialization failed. {e}")
