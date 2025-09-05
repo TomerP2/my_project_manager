@@ -19,3 +19,7 @@ This project aims to create a program that acts as a project manager for my pers
 - Allows user to sync project with the template folder, so that changes to the template are reflected in the projects
 - Allows user to zip projects for sharing. Which automatically removes the .env and creates a .env.example file. 
 - Allows user to archive projects, which zips the project and moves it to the archive, sorted by date.
+
+### Upcoming features
+- [ ] Add option whether to create obsidian vault for project
+- [ ] Add options for syncing projects, zip projects, and archive projects
