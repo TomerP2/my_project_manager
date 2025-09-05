@@ -30,7 +30,7 @@ def create_processing_step():
         step_name = step_name.split('=')[1].strip('"')
 
     # Define paths
-    template_path = env_vars["TEMPLATE_PROCESSING_STEP_FOLDER_PATH"]
+    template_path = r'.\template_processing_step'
     current_dir = os.getcwd()
 
     # Find highest step number
