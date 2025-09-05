@@ -2,6 +2,8 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from pathlib import Path
+import json
+import os
 
 # Internal imports
 from create_project import create_project
@@ -30,6 +32,10 @@ def create_project_window():
             messagebox.showinfo("Success", "Project created successfully!")
         except Exception as e:
             messagebox.showerror("Error", str(e))
+            
+    # Get settings from settings.json
+    with open(r"./settings.json", "r") as f:
+        settings = json.load(f)
 
     # Create the main application window
     root = tk.Tk()
@@ -39,7 +45,7 @@ def create_project_window():
     directory_label = tk.Label(root, text="Directory:")
     directory_label.grid(row=0, column=0, padx=10, pady=5, sticky="e")
     directory_entry = tk.Entry(root, width=40)
-    default_directory = "C:/Users/tomer/OneDrive/Home/Projects"
+    default_directory = settings["default projects folder"]
     directory_entry.insert(0, default_directory)  # Set default directory
     directory_entry.grid(row=0, column=1, padx=10, pady=5)
     directory_browse = tk.Button(root, text="Browse", command=lambda: browse_directory(directory_entry))
@@ -55,7 +61,7 @@ def create_project_window():
     template_dir_label = tk.Label(root, text="Template Directory:")
     template_dir_label.grid(row=2, column=0, padx=10, pady=5, sticky="e")
     template_dir_entry = tk.Entry(root, width=40)
-    default_template_dir = str(Path(__file__).resolve().parent.parent / "template_folders")
+    default_template_dir = settings["default templates folder"]
     template_dir_entry.insert(0, default_template_dir)  # Set default directory to project base folder
     template_dir_entry.grid(row=2, column=1, padx=10, pady=5)
     template_dir_browse = tk.Button(root, text="Browse", command=lambda: browse_directory(template_dir_entry, default_template_dir))
