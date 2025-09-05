@@ -12,7 +12,8 @@ This project aims to create a program that acts as a project manager for my pers
 - Create a new project from a chosen template folder.
 - Template folder: Contains folders and files.
 - Any text 'PROJECT_NAME', either in a file/folder name or file content, will be replaced with the user given project name.
-- Any text 'CURRENT_DATA' will be replaced with the current date.
+- Any text 'CURRENT_DATE' will be replaced with the current date.
+- Option to create an empty .git repository in the project folder
 
 ### Project management
 - Allows user to sync project with the template folder, so that changes to the template are reflected in the projects
