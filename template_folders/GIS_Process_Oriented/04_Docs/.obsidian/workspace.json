@@ -4,37 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "d62f430ed3bb302d",
+        "id": "8346ec46635d65a7",
         "type": "tabs",
         "children": [
           {
-            "id": "6282b34b13cb2c95",
+            "id": "d00cc4cfeed500a6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "README"
-            }
-          },
-          {
-            "id": "1b6033f293badc4c",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.9.12"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.9.12"
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -247,8 +230,9 @@
       "copilot:Open Copilot Chat": false
     }
   },
-  "active": "1b6033f293badc4c",
+  "active": "3f39d8a9a8a07676",
   "lastOpenFiles": [
+    "Tasks.md",
     "01_Processing_steps/00_test/output",
     "01_Processing_steps/00_test/test.ipynb",
     "01_Processing_steps/00_test",
@@ -260,7 +244,6 @@
     "01_Processing_steps/00_test/output/vectors_RDNEW.gpkg",
     "01_Processing_steps/00_test/output/pointclouds",
     "01_Processing_steps/create_step.pyw",
-    "desktop.ini",
     "03_Docs/Templates/task template.md",
     "03_Docs/AI/AI Prompts/Translate to English.md",
     "03_Docs/AI/AI Prompts/Translate to Dutch.md",
