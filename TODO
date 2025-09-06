@@ -1,11 +1,12 @@
 Backlog:
     ☐ test suite maken voor basic functions
-    ☐ @bug placeholder isn t being replaced inside files when creating project
-    ☐ @bug symlink folders aren t being created properly 
-    ☐ find new task manager extention
+    ☐ Rewrite this project in TTD-template style
+    ☐ Rewrite GUI-elements to be more best-practice (https://chatgpt.com/c/68bc2a43-02a0-832e-8d7d-2dcdbd440a86)
+    ☐ @bug placeholder isn't being replaced inside files when creating project
+    ☐ @bug symlink folders aren't being created properly 
 
 To do:
-    ☐ create gui folder in tdd template
+    ☐ create gui-enabled folder structure in tdd template (https://chatgpt.com/c/68bc2a43-02a0-832e-8d7d-2dcdbd440a86)
     
 Doing:
 
@@ -14,4 +15,5 @@ Paused:
 Blocked:
 
 Archive:
+  ✔ find new task manager extention @done(25-09-06 17:28) @project(Backlog)
   ✔ create project template for test driven development project @done(25-09-06 17:17) @project(Done)
