@@ -15,11 +15,12 @@ def create_project_window():
             entry.delete(0, tk.END)
             entry.insert(0, directory)
 
-    def on_create_project(directory_entry, project_name_entry, template_dir_entry, git_var):
+    def on_create_project(directory_entry, project_name_entry, template_dir_entry, git_var, use_obsidian_var):
         directory = directory_entry.get()
         project_name = project_name_entry.get()
         template_dir = template_dir_entry.get()
         use_git = git_var.get()
+        use_obsidian = use_obsidian_var.get()
 
         if not directory or not project_name or not template_dir:
             messagebox.showerror("Error", "Directory, project name, and template directory are required.")
@@ -28,12 +29,11 @@ def create_project_window():
         project_path = Path(directory) / project_name
 
         try:
-            create_project(project_path, Path(template_dir), use_git)
+            create_project(project_path, Path(template_dir), use_git, use_obsidian)
             messagebox.showinfo("Success", "Project created successfully!")
         except Exception as e:
             messagebox.showerror("Error", str(e))
             
-    print(os.getcwd())
     # Get settings from settings.json
     with open(r"./Code/settings.json", "r") as f:
         settings = json.load(f)
@@ -72,10 +72,15 @@ def create_project_window():
     git_var = tk.BooleanVar()
     git_checkbox = tk.Checkbutton(root, text="Initialize Git Repository", variable=git_var)
     git_checkbox.grid(row=3, column=1, pady=10)
+    
+    # Obsidian vault checkbox
+    use_obsidian_var = tk.BooleanVar()
+    git_checkbox = tk.Checkbutton(root, text="Create Obsidian Vault", variable=use_obsidian_var)
+    git_checkbox.grid(row=4, column=1, pady=10)
 
     # Create project button
-    create_project_button = tk.Button(root, text="Create Project", command=lambda: on_create_project(directory_entry, project_name_entry, template_dir_entry, git_var))
-    create_project_button.grid(row=4, column=1, pady=20)
+    create_project_button = tk.Button(root, text="Create Project", command=lambda: on_create_project(directory_entry, project_name_entry, template_dir_entry, git_var, use_obsidian_var))
+    create_project_button.grid(row=5, column=1, pady=20)
 
     # Run the application
     root.mainloop()
