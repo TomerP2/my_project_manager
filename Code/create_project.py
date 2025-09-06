@@ -33,11 +33,7 @@ def create_project(project_path: Path,
         if not obsidian_template.exists():
             raise FileNotFoundError(f"Obsidian template directory '{obsidian_template}' not found.")
         
-        docs_folder_path = project_path / f"04_Docs"
-        if not docs_folder_path.exists():
-            raise FileNotFoundError(f"Docs directory '{docs_folder_path}' not found.")
-
-        shutil.copytree(obsidian_template, docs_folder_path, dirs_exist_ok=True)
+        shutil.copytree(obsidian_template, project_path, dirs_exist_ok=True)
 
     # === Rename folders containing 'PLACEHOLDER' (deepest first) ===
     for folder in sorted(project_path.rglob("*"), key=lambda p: -p.relative_to(project_path).parts.__len__()):
