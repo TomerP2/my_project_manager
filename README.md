@@ -11,7 +11,7 @@ This project aims to create a program that acts as a project manager for my pers
 ### New project creation
 - Create a new project from a chosen template folder.
 - Template folder: Contains folders and files.
-- Any text 'PROJECT_NAME', either in a file/folder name or file content, will be replaced with the user given project name.
+- Any text 'PLACEHOLDER', either in a file/folder name or file content, will be replaced with the user given project name.
 - Any text 'CURRENT_DATE' will be replaced with the current date.
 - Option to create an empty .git repository in the project folder
 
@@ -21,5 +21,4 @@ This project aims to create a program that acts as a project manager for my pers
 - Allows user to archive projects, which zips the project and moves it to the archive, sorted by date.
 
 ### Upcoming features
-- [ ] Add option whether to create obsidian vault for project
 - [ ] Add options for syncing projects, zip projects, and archive projects
