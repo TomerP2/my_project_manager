@@ -1,0 +1,17 @@
+Backlog:
+    ☐ test suite maken voor basic functions
+    ☐ @bug placeholder isn t being replaced inside files when creating project
+    ☐ @bug symlink folders aren t being created properly 
+    ☐ find new task manager extention
+
+To do:
+    ☐ create gui folder in tdd template
+    
+Doing:
+
+Paused:
+
+Blocked:
+
+Archive:
+  ✔ create project template for test driven development project @done(25-09-06 17:17) @project(Done)
