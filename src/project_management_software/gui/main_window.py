@@ -1,31 +1,53 @@
 # External imports
 import tkinter as tk
+from tkinter import ttk
 
 # Internal imports
 from gui.create_project_window import create_project_window
 from gui.archive_project_window import archive_project_window
 from gui.settings_window import settings_window
+from utils.GUI_style import setup_style
 
-def main_window():
-    # Create the main application window
-    root = tk.Tk()
-    root.title("Project Management Software")
-    root.geometry("200x200")  # Set window size to provide more buffer around the button
-
-    # Create New Project button
-    create_project_button = tk.Button(root, text="Create New Project", command=create_project_window)
-    create_project_button.pack(pady=10)
+class Main_window(ttk.Frame):
+    def __init__(self, master):
+        self.master = master
+        ttk.Frame.__init__(self, self.master)
+        setup_style()
+        self.configure_gui()
+        self.create_widgets()
+   
+    def configure_gui(self):
+        # Create the main application window
+        self.master.title("Project Management Software") # type: ignore
+        self.master.geometry("200x200")  # type: ignore
     
-    # Create archive project button
-    archive_project_button = tk.Button(root, text="Archive Project", command=archive_project_window)
-    archive_project_button.pack(pady=10)
+    def create_widgets(self):
+        # Create New Project button
+        create_project_button = ttk.Button(
+            self.master, 
+            text="Create New Project", 
+            command=self._on_create_project)
+        create_project_button.pack(pady=10)
+        
+        # Create archive project button
+        archive_project_button = ttk.Button(
+            self.master, 
+            text="Archive Project", 
+            command=self._on_archive_project)
+        archive_project_button.pack(pady=10)
 
-    # Create settings button
-    settings_button = tk.Button(root, text="Settings", command=settings_window)
-    settings_button.pack(pady=10)
+        # Create settings button
+        settings_button = ttk.Button(
+            self.master,
+            text="Settings",
+            command=self._on_settings)
+        settings_button.pack(pady=10)    
+    
+    def _on_create_project(self):
+        create_project_window()
 
-    # Run the application
-    root.mainloop()
+    def _on_archive_project(self):
+        archive_project_window()
 
-if __name__ == "__main__":
-    main_window()
+    def _on_settings(self):
+        settings_window()

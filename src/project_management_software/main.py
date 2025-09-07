@@ -1,7 +1,10 @@
-from gui.main_window import main_window
+from gui.main_window import Main_window
+import tkinter as tk
 
 def main():
-    main_window()
+    root = tk.Tk()
+    main_app =  Main_window(root)
+    root.mainloop()
 
 if __name__ == "__main__":
     main()
