@@ -3,6 +3,7 @@ Backlog:
     ☐ @bug placeholder isn't being replaced inside files when creating project
     ☐ @bug symlink folders aren't being created properly 
     ☐ Rewrite GUI-elements to be best practice tkinter.
+    ☐ Improve GUI for archive project.
 
 To do:
     ☐ Rewrite this project in TTD-template style
