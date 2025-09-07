@@ -1,13 +1,12 @@
 Backlog:
     ☐ test suite maken voor basic functions
-    ☐ Rewrite this project in TTD-template style
-    ☐ Rewrite GUI-elements in pyQT. 
     ☐ @bug placeholder isn't being replaced inside files when creating project
     ☐ @bug symlink folders aren't being created properly 
+    ☐ Rewrite GUI-elements to be best practice tkinter.
 
 To do:
-    ☐ create gui-enabled folder structure in tdd template (https://chatgpt.com/c/68bc2a43-02a0-832e-8d7d-2dcdbd440a86)
-    
+    ☐ Rewrite this project in TTD-template style
+
 Doing:
 
 Paused:
@@ -15,6 +14,7 @@ Paused:
 Blocked:
 
 Archive:
+  ✔ create gui-enabled folder structure in tdd template (https://chatgpt.com/c/68bc2a43-02a0-832e-8d7d-2dcdbd440a86) @done(25-09-07 10:54) @project(To do)
   ✔ Add license to all project templates @done(25-09-06 17:37) @project(Backlog)
   ✔ find new task manager extention @done(25-09-06 17:28) @project(Backlog)
   ✔ create project template for test driven development project @done(25-09-06 17:17) @project(Done)
