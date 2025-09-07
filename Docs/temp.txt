@@ -1,0 +1,24 @@
+I am using python and tkinter for a small python tool. I want to create a class that uses tkinter to make a simple GUI for different parts of the application. The class should look something like this:
+
+class simpleActionWindow():
+    # Class that  takes in user inputs and activates a given function with the user inputs
+    def __init__(self):
+        ...
+    
+    def add_folder_input(text, input_name):
+        # Lets user select a folder
+    
+    def add_list_input(text, input_name, list):
+        # Lets user select from a list
+
+    def add_boolean_input(text, input_name):
+        # Lets user toggle a switch
+
+    def go_button(text, function_to_activate):
+        # activates the function with the user inputs
+
+    def run_window()
+
+I have some questions:
+1. Is this best practice? 
+2. If not, what is the better way to approach having a standardized GUI for my application (aka to reduce duplicate code across different GUI scripts.)
