@@ -10,7 +10,8 @@ def create_project(project_path: Path,
                    use_git=False, 
                    create_obsidian_vault=False) -> None:
     # Get settings from settings.json
-    with open(r"./Code/settings.json", "r") as f:
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    with open(r"../settings.json", "r") as f:
         settings = json.load(f)
         
     if not project_path:

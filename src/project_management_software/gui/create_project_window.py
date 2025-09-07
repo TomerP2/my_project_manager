@@ -15,11 +15,10 @@ def create_project_window():
             entry.delete(0, tk.END)
             entry.insert(0, directory)
 
-    # Ensure 'settings' is loaded at the beginning of the function
-    with open(r"./Code/settings.json", "r") as f:
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    with open(r"../settings.json", "r") as f:
         settings = json.load(f)
 
-    # Ensure 'root' is defined before any UI elements are created
     root = tk.Tk()
     root.title("Project Management Software")
 
