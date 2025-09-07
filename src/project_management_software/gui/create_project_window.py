@@ -6,7 +6,7 @@ import json
 import os
 
 # Internal imports
-from create_project import create_project
+from core.create_project import create_project
 
 def create_project_window():
     def browse_directory(entry, initial_dir=None):

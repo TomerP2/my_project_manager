@@ -2,10 +2,9 @@ import json
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-
 def settings_window():
     # Load settings from the JSON file
-    settings_file = "./Code/settings.json"
+    settings_file = "./settings.json"
     try:
         with open(settings_file, "r") as file:
             settings = json.load(file)

@@ -1,6 +1,6 @@
 from tkinter import Tk, Label, Button, filedialog
 from pathlib import Path
-from archive_project import archive_project
+from core.archive_project import archive_project
 
 def archive_project_window():
     """
