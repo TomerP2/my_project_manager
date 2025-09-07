@@ -1,7 +1,7 @@
 Backlog:
     ☐ test suite maken voor basic functions
     ☐ Rewrite this project in TTD-template style
-    ☐ Rewrite GUI-elements to be more best-practice (https://chatgpt.com/c/68bc2a43-02a0-832e-8d7d-2dcdbd440a86)
+    ☐ Rewrite GUI-elements in pyQT. 
     ☐ @bug placeholder isn't being replaced inside files when creating project
     ☐ @bug symlink folders aren't being created properly 
 
