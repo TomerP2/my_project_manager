@@ -12,9 +12,8 @@ def temp_project_dir(tmp_path):
     """Fixture to create a temporary project directory."""
     project_dir = tmp_path / "test_project"
     yield project_dir
-    # TODO enable this after testing
-    # if project_dir.exists():
-    #     shutil.rmtree(project_dir)
+    if project_dir.exists():
+        shutil.rmtree(project_dir)
 
 @pytest.fixture
 def temp_template_dir(tmp_path):
@@ -23,9 +22,8 @@ def temp_template_dir(tmp_path):
     template_dir.mkdir()
     (template_dir / "PLACEHOLDER_file.txt").write_text("This is a PLACEHOLDER content.")
     yield template_dir
-    # TODO enable this after testing
-    # if template_dir.exists():
-    #     shutil.rmtree(template_dir)
+    if template_dir.exists():
+        shutil.rmtree(template_dir)
 
 def test_create_project(temp_project_dir, temp_template_dir):
     """Test the create_project function."""
@@ -47,9 +45,6 @@ def test_create_project(temp_project_dir, temp_template_dir):
 
 def test_create_project_with_git(temp_project_dir, temp_template_dir):
     """Test the create_project function with git initialization."""
-    # Print the project path for debugging TODO Remove this after testing
-    print(f"Project path: {temp_project_dir}")
-    
     create_project(
         project_path=temp_project_dir,
         template_dirs=[temp_template_dir],

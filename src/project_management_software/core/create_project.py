@@ -69,15 +69,10 @@ def create_project(project_path: Path,
             file.write(content)
                     
     # === Create a new git repository in project directory ===
-    # TODO This is broken. Fix it. The project folder seems to exist fine, but git init fails with 'The system cannot find the file specified'.
-    # Try: Test with local folder, maybe its an access issue.
     if use_git:    
         try:
-            print (f"Initializing git repository in {project_path}") #TODO remove after testing
-            subprocess.run(["cd", str(project_path)], shell=True)#TODO remove after testing
-            
             subprocess.run(["git", "init"], cwd=project_path, check=True)
             subprocess.run(["git", "add", "."], cwd=project_path, check=True)
             subprocess.run(["git", "commit", "-m", "Initial commit"], cwd=project_path, check=True)
         except Exception as e:
-            raise RuntimeError(f"Git initialization failed: {e}")
+            raise RuntimeError(f"Git initialization failed: {e}. Make sure git is installed and added to PATH.")
