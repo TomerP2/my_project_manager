@@ -48,6 +48,19 @@ def create_project(project_path: Path,
             new_name = file.name.replace("PLACEHOLDER", project_path.name)
             file.rename(file.with_name(new_name))
             
+    # === Replace 'PLACEHOLDER' in all files ===
+    for file in project_path.rglob("*"):
+        if file.is_file():
+            try:
+                with open(file, "r", encoding="utf-8") as f:
+                    content = f.read()
+                content = content.replace("PLACEHOLDER", project_path.name)
+                with open(file, "w", encoding="utf-8") as f:
+                    f.write(content)
+            except UnicodeDecodeError:
+                # Skip binary files
+                continue
+            
     # === Replace 'PROJECT_PATH_PLACEHOLDER' in .env file ===
     env_example_path = project_path / ".env"
     if env_example_path.exists():
