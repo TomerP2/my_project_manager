@@ -7,7 +7,6 @@ Backlog:
   ☐ Create a virtual enviroment for this project.
   
 To do:
-  ☐ Complie project into executable file.
 
 Doing:
 
@@ -16,6 +15,7 @@ Paused:
 Blocked:
 
 Archive:
+  ✔ Complie project into executable file. @done(25-09-08 11:43)
   ✔ Rewrite GUI-elements to be best practice tkinter. @done(25-09-08 10:20) @project(Doing)
   ✔ Improve GUI for archive project. @done(25-09-08 10:19)
   ✔ test suite maken voor basic functions @done(25-09-08 09:34) @project(Backlog)
