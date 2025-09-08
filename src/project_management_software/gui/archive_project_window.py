@@ -1,55 +1,53 @@
-from tkinter import Tk, Label, Button, filedialog
+import tkinter as tk
+from tkinter import ttk, filedialog
 from pathlib import Path
 from core.archive_project import archive_project
 
-def archive_project_window():
-    """
-    Creates a GUI that calls archive_project from archive_project.py with given user inputs.
-    """
-    def select_project_folder():
+class ArchiveProjectWindow(tk.Toplevel):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.geometry('500x200')
+        self.title('Archive Project')
+
+        self.project_folder_label = ttk.Label(self, text="", width=50, anchor="w")
+        self.archive_folder_label = ttk.Label(self, text="", width=50, anchor="w")
+        self.status_label = ttk.Label(self, text="", foreground="blue")
+
+        self._create_widgets()
+
+    def _select_project_folder(self):
         folder = filedialog.askdirectory(title="Select Project Folder")
         if folder:
-            project_folder_label.config(text=folder)
+            self.project_folder_label.config(text=folder)
 
-    def select_archive_folder():
+    def _select_archive_folder(self):
         folder = filedialog.askdirectory(title="Select Archive Folder")
         if folder:
-            archive_folder_label.config(text=folder)
+            self.archive_folder_label.config(text=folder)
 
-    def archive():
-        project_path = Path(project_folder_label.cget("text"))
-        archive_path = Path(archive_folder_label.cget("text"))
+    def _archive(self):
+        project_path = Path(self.project_folder_label.cget("text"))
+        archive_path = Path(self.archive_folder_label.cget("text"))
         try:
             archive_project(project_path, archive_path)
-            status_label.config(text="Project archived successfully!", fg="green")
+            self.status_label.config(text="Project archived successfully!", foreground="green")
         except Exception as e:
-            status_label.config(text=f"Error: {e}", fg="red")
+            self.status_label.config(text=f"Error: {e}", foreground="red")
+            
+    def _create_widgets(self):
+        # Project folder selection
+        ttk.Label(self, text="Project Folder:").grid(row=0, column=0, padx=10, pady=5, sticky="w")
+        self.project_folder_label.grid(row=0, column=1, padx=10, pady=5)
+        ttk.Button(self, text="Browse", command=self._select_project_folder).grid(row=0, column=2, padx=10, pady=5)
 
-    # Initialize the GUI window
-    root = Tk()
-    root.title("Archive Project")
+        # Archive folder selection
+        ttk.Label(self, text="Archive Folder:").grid(row=1, column=0, padx=10, pady=5, sticky="w")
+        self.archive_folder_label.grid(row=1, column=1, padx=10, pady=5)
+        ttk.Button(self, text="Browse", command=self._select_archive_folder).grid(row=1, column=2, padx=10, pady=5)
 
-    # Project folder selection
-    Label(root, text="Project Folder:").grid(row=0, column=0, padx=10, pady=5, sticky="w")
-    project_folder_label = Label(root, text="", width=50, anchor="w")
-    project_folder_label.grid(row=0, column=1, padx=10, pady=5)
-    Button(root, text="Browse", command=select_project_folder).grid(row=0, column=2, padx=10, pady=5)
+        # Archive button
+        ttk.Button(self, text="Archive", command=self._archive).grid(row=2, column=1, pady=10)
 
-    # Archive folder selection
-    Label(root, text="Archive Folder:").grid(row=1, column=0, padx=10, pady=5, sticky="w")
-    archive_folder_label = Label(root, text="", width=50, anchor="w")
-    archive_folder_label.grid(row=1, column=1, padx=10, pady=5)
-    Button(root, text="Browse", command=select_archive_folder).grid(row=1, column=2, padx=10, pady=5)
-
-    # Archive button
-    Button(root, text="Archive", command=archive).grid(row=2, column=1, pady=10)
-
-    # Status label
-    status_label = Label(root, text="", fg="blue")
-    status_label.grid(row=3, column=0, columnspan=3, pady=10)
-
-    # Run the GUI event loop
-    root.mainloop()
-
-if __name__ == "__main__":
-    archive_project_window()
+        # Status label
+        self.status_label.grid(row=3, column=0, columnspan=3, pady=10)
