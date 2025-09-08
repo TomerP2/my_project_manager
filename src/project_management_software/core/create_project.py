@@ -20,8 +20,11 @@ def create_project(project_path: Path,
     if not project_path:
         raise ValueError("Project path cannot be empty.")
 
-    # Set working directory to the script's directory
-    os.chdir(os.path.dirname(os.path.abspath(sys.argv[0])))
+    # Set working directory to the script's directory or PyInstaller temp folder
+    if hasattr(sys, '_MEIPASS'):
+        os.chdir(sys._MEIPASS)  # type: ignore
+    else:
+        os.chdir(os.path.dirname(os.path.abspath(__file__)))
     
     # === Copy template folder ===
     if not template_dir.exists():
@@ -74,10 +77,11 @@ def create_project(project_path: Path,
             file.write(content)
                     
     # === Create a new git repository in project directory ===
+    #TODO This part doesn't work after complilation with PyInstaller. Fix.
     if use_git:    
         try:
             subprocess.run(["git", "init"], cwd=project_path, check=True)
             subprocess.run(["git", "add", "."], cwd=project_path, check=True)
             subprocess.run(["git", "commit", "-m", "Initial commit"], cwd=project_path, check=True)
         except Exception as e:
-            print(f"Warning: Git initialization failed. {e}")
+            raise RuntimeError(f"Git initialization failed: {e}")
