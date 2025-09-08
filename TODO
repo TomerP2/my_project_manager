@@ -10,6 +10,8 @@ Backlog:
   ☐ @bug In template GIS process, the placeholder name in the .jpyter file is replaced which causes errors. 
   
 To do:
+  ☐ @bug intiating git test is failing
+  ☐ Rewrite create_project_window to use checkboxes instead of dropdown for templates.
 
 Doing:
 
