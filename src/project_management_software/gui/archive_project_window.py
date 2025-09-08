@@ -7,7 +7,7 @@ class ArchiveProjectWindow(tk.Toplevel):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.geometry('500x200')
+        self.geometry('600x200')
         self.title('Archive Project')
 
         self.project_folder_label = ttk.Label(self, text="", width=50, anchor="w")
