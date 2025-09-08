@@ -14,9 +14,8 @@ except ImportError:
     import config
 
 def create_project(project_path: Path, 
-                   template_dir: Path, 
-                   use_git=False, 
-                   create_obsidian_vault=False) -> None:        
+                   template_dirs: list[Path], 
+                   use_git=False) -> None:        
     if not project_path:
         raise ValueError("Project path cannot be empty.")
 
@@ -26,22 +25,15 @@ def create_project(project_path: Path,
     else:
         os.chdir(os.path.dirname(os.path.abspath(__file__)))
     
-    # === Copy template folder ===
-    if not template_dir.exists():
-        raise FileNotFoundError(f"Template directory '{template_dir}' not found.")
+    # === Copy template folders ===
     if project_path.exists():
         raise FileExistsError(f"Project directory '{project_path}' already exists.")
 
-    shutil.copytree(template_dir, project_path)
+    for template_dir in template_dirs:
+        if not template_dir.exists():
+            raise FileNotFoundError(f"Template directory '{template_dir}' not found.")
+        shutil.copytree(template_dir, project_path, dirs_exist_ok=True)
     
-    # === Create Obsidian vault if needed ===
-    if create_obsidian_vault:
-        obsidian_template = Path(config.settings["Obsidian vault template"])
-        if not obsidian_template.exists():
-            raise FileNotFoundError(f"Obsidian template directory '{obsidian_template}' not found.")
-        
-        shutil.copytree(obsidian_template, project_path, dirs_exist_ok=True)
-
     # === Rename folders containing 'PLACEHOLDER' (deepest first) ===
     for folder in sorted(project_path.rglob("*"), key=lambda p: -p.relative_to(project_path).parts.__len__()):
         if folder.is_dir() and "PLACEHOLDER" in folder.name:
@@ -77,9 +69,13 @@ def create_project(project_path: Path,
             file.write(content)
                     
     # === Create a new git repository in project directory ===
-    #TODO This part doesn't work after complilation with PyInstaller. Fix.
+    # TODO This is broken. Fix it. The project folder seems to exist fine, but git init fails with 'The system cannot find the file specified'.
+    # Try: Test with local folder, maybe its an access issue.
     if use_git:    
         try:
+            print (f"Initializing git repository in {project_path}") #TODO remove after testing
+            subprocess.run(["cd", str(project_path)], shell=True)#TODO remove after testing
+            
             subprocess.run(["git", "init"], cwd=project_path, check=True)
             subprocess.run(["git", "add", "."], cwd=project_path, check=True)
             subprocess.run(["git", "commit", "-m", "Initial commit"], cwd=project_path, check=True)
