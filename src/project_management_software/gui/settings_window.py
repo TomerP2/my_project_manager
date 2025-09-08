@@ -2,8 +2,15 @@ import json
 import tkinter as tk
 from tkinter import ttk, messagebox
 import os
+import sys
+from pathlib import Path
 
-import config
+# Internal imports
+try:
+    import config
+except ImportError:
+    sys.path.append(str(Path(__file__).resolve().parent.parent))
+    import config
 
 def settings_window():
     # Create the main window
@@ -25,7 +32,10 @@ def settings_window():
 
     # Save settings back to the JSON file
     def save_settings():
+        for key, entry in entries.items():
+            config.settings[key] = entry.get()
         config.save_settings()
+        messagebox.showinfo("Settings", "Settings saved successfully!")
 
     # Add Save and Cancel buttons
     ttk.Button(frame, text="Save", command=save_settings).grid(row=len(config.settings), column=0, pady=10)
