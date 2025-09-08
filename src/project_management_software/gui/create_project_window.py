@@ -7,6 +7,7 @@ import os
 
 # Internal imports
 from core.create_project import create_project
+import config
 
 class CreateProjectWindow(tk.Toplevel):
     def __init__(self, parent):
@@ -15,7 +16,7 @@ class CreateProjectWindow(tk.Toplevel):
         self.geometry("500x300")
         self.title("Create Project")
 
-        self.settings = self._load_settings()
+        self.settings = config.settings
         self.default_template_dir = self.settings["default templates folder"]
         self.default_directory = self.settings["default projects folder"]
 
@@ -24,11 +25,6 @@ class CreateProjectWindow(tk.Toplevel):
         self.use_obsidian_var = tk.BooleanVar()
 
         self._create_widgets()
-
-    def _load_settings(self):
-        os.chdir(os.path.dirname(os.path.abspath(__file__)))
-        with open(r"../settings.json", "r") as f:
-            return json.load(f)
 
     def _browse_directory(self, entry, initial_dir=None):
         directory = filedialog.askdirectory(initialdir=initial_dir)

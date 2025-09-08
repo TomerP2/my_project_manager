@@ -3,21 +3,9 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import os
 
-def settings_window():
-    # Load settings from the JSON file
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    settings_file = "../settings.json"
-    
-    try:
-        with open(settings_file, "r") as file:
-            settings = json.load(file)
-    except FileNotFoundError:
-        messagebox.showerror("Error", f"Settings file '{settings_file}' not found.")
-        return
-    except json.JSONDecodeError:
-        messagebox.showerror("Error", f"Settings file '{settings_file}' is not a valid JSON file.")
-        return
+import config
 
+def settings_window():
     # Create the main window
     root = tk.Tk()
     root.title("Settings")
@@ -28,7 +16,7 @@ def settings_window():
 
     # Create input fields dynamically based on the keys in the JSON file
     entries = {}
-    for idx, (key, value) in enumerate(settings.items()):
+    for idx, (key, value) in enumerate(config.settings.items()):
         ttk.Label(frame, text=key).grid(row=idx, column=0, sticky=tk.W, pady=5)
         entry = ttk.Entry(frame, width=50)
         entry.insert(0, value)
@@ -37,18 +25,11 @@ def settings_window():
 
     # Save settings back to the JSON file
     def save_settings():
-        for key, entry in entries.items():
-            settings[key] = entry.get()
-        try:
-            with open(settings_file, "w") as file:
-                json.dump(settings, file, indent=4)
-            messagebox.showinfo("Success", "Settings saved successfully.")
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to save settings: {e}")
+        config.save_settings()
 
     # Add Save and Cancel buttons
-    ttk.Button(frame, text="Save", command=save_settings).grid(row=len(settings), column=0, pady=10)
-    ttk.Button(frame, text="Cancel", command=root.destroy).grid(row=len(settings), column=1, pady=10)
+    ttk.Button(frame, text="Save", command=save_settings).grid(row=len(config.settings), column=0, pady=10)
+    ttk.Button(frame, text="Cancel", command=root.destroy).grid(row=len(config.settings), column=1, pady=10)
 
     # Run the application
     root.mainloop()

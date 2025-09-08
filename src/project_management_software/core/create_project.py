@@ -1,3 +1,4 @@
+# External imports
 import shutil
 import os
 from pathlib import Path
@@ -5,15 +6,13 @@ import sys
 import subprocess
 import json
 
+# Internal imports
+import config
+
 def create_project(project_path: Path, 
                    template_dir: Path, 
                    use_git=False, 
-                   create_obsidian_vault=False) -> None:
-    # Get settings from settings.json
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    with open(r"../settings.json", "r") as f:
-        settings = json.load(f)
-        
+                   create_obsidian_vault=False) -> None:        
     if not project_path:
         raise ValueError("Project path cannot be empty.")
 
@@ -30,7 +29,7 @@ def create_project(project_path: Path,
     
     # === Create Obsidian vault if needed ===
     if create_obsidian_vault:
-        obsidian_template = Path(settings["Obsidian vault template"])
+        obsidian_template = Path(config.settings["Obsidian vault template"])
         if not obsidian_template.exists():
             raise FileNotFoundError(f"Obsidian template directory '{obsidian_template}' not found.")
         

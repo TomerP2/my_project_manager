@@ -4,6 +4,7 @@ Backlog:
   ☐ Create symlinked folder 'Shared Folder' when adding obsidian vault.
   ☐ Rename PLACEHOLDER to PROJECT_NAME everywhere
   ☐ Add option to add license to project when creating it.
+  ☐ Create a virtual enviroment for this project.
   
 To do:
   ☐ Complie project into executable file.
