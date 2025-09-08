@@ -1,0 +1,1 @@
+Python -m PyInstaller --onefile --windowed --add-data "project_management_software/settings.json;." project_management_software/main.py
