@@ -1,17 +1,15 @@
 Backlog:
   ☐ Add launch.json to ttd template.
   ☐ Add option to create virtual environment when creating project.
-  ☐ Create symlinked folder 'Shared Folder' when adding obsidian vault.
+  ☐ Test copying symlink folders 
   ☐ Rename PLACEHOLDER to PROJECT_NAME everywhere
   ☐ Add option to add license to project when creating it.
   ☐ Create a virtual enviroment for this project.
-  ☐ Think of a way to give users the project templates including empty files.
   ☐ Write a tutorial for using project templates.
   ☐ @bug In template GIS process, the placeholder name in the .jpyter file is replaced which causes errors. 
   
 To do:
-  ☐ @bug intiating git test is failing
-  ☐ Rewrite create_project_window to use checkboxes instead of dropdown for templates.
+  ☐ Remake templates to be more modular. 
 
 Doing:
 
@@ -20,6 +18,9 @@ Paused:
 Blocked:
 
 Archive:
+  ✔ Think of a way to give users the project templates including empty files. @done(25-09-08 21:29) @project(Backlog)
+  ✔ @bug intiating git test is failing @done(25-09-08 21:29) @project(To do)
+  ✔ Rewrite create_project_window to use checkboxes instead of dropdown for templates. @done(25-09-08 21:29) @project(To do)
   ✔ Complie project into executable file. @done(25-09-08 11:43)
   ✔ Rewrite GUI-elements to be best practice tkinter. @done(25-09-08 10:20) @project(Doing)
   ✔ Improve GUI for archive project. @done(25-09-08 10:19)
