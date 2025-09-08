@@ -1,22 +1,22 @@
 Backlog:
-  ☐ Complie project into executable file.
   ☐ Add launch.json to ttd template.
   ☐ Add option to create virtual environment when creating project.
-  
-To do:
-  ☐ @bug symlink folders aren't being created properly 
-  ☐ Improve GUI for archive project.
+  ☐ Create symlinked folder 'Shared Folder' when adding obsidian vault.
   ☐ Rename PLACEHOLDER to PROJECT_NAME everywhere
   ☐ Add option to add license to project when creating it.
+  
+To do:
+  ☐ Complie project into executable file.
 
 Doing:
-    ☐ Rewrite GUI-elements to be best practice tkinter.
 
 Paused:
 
 Blocked:
 
 Archive:
+  ✔ Rewrite GUI-elements to be best practice tkinter. @done(25-09-08 10:20) @project(Doing)
+  ✔ Improve GUI for archive project. @done(25-09-08 10:19)
   ✔ test suite maken voor basic functions @done(25-09-08 09:34) @project(Backlog)
   ✔ Rewrite this project in TTD-template style @done(25-09-08 09:33) @project(To do)
   ✔ @bug placeholder isn't being replaced inside files when creating project @done(25-09-08 09:32) @project(Backlog)
