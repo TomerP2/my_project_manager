@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 
 # Internal imports
-from gui.create_project_window import create_project_window
+from gui.create_project_window import CreateProjectWindow
 from gui.archive_project_window import archive_project_window
 from gui.settings_window import settings_window
 from utils.GUI_style import setup_style
@@ -44,7 +44,8 @@ class Main_window(ttk.Frame):
         settings_button.pack(pady=10)    
     
     def _on_create_project(self):
-        create_project_window()
+        create_project_window = CreateProjectWindow(self.master)
+        create_project_window.grab_set()
 
     def _on_archive_project(self):
         archive_project_window()
