@@ -7,7 +7,11 @@ import subprocess
 import json
 
 # Internal imports
-import config
+try:
+    import config
+except ImportError:
+    sys.path.append(str(Path(__file__).resolve().parent.parent))
+    import config
 
 def create_project(project_path: Path, 
                    template_dir: Path, 
