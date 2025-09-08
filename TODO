@@ -1,20 +1,20 @@
 Backlog:
-    ☐ test suite maken voor basic functions
-    ☐ @bug placeholder isn't being replaced inside files when creating project
     ☐ @bug symlink folders aren't being created properly 
-    ☐ Rewrite GUI-elements to be best practice tkinter.
     ☐ Improve GUI for archive project.
-
+    
 To do:
-    ☐ Rewrite this project in TTD-template style
 
 Doing:
+    ☐ Rewrite GUI-elements to be best practice tkinter.
 
 Paused:
 
 Blocked:
 
 Archive:
+  ✔ test suite maken voor basic functions @done(25-09-08 09:34) @project(Backlog)
+  ✔ Rewrite this project in TTD-template style @done(25-09-08 09:33) @project(To do)
+  ✔ @bug placeholder isn't being replaced inside files when creating project @done(25-09-08 09:32) @project(Backlog)
   ✔ create gui-enabled folder structure in tdd template (https://chatgpt.com/c/68bc2a43-02a0-832e-8d7d-2dcdbd440a86) @done(25-09-07 10:54) @project(To do)
   ✔ Add license to all project templates @done(25-09-06 17:37) @project(Backlog)
   ✔ find new task manager extention @done(25-09-06 17:28) @project(Backlog)
