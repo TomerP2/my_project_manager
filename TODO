@@ -1,8 +1,11 @@
 Backlog:
-    ☐ @bug symlink folders aren't being created properly 
-    ☐ Improve GUI for archive project.
-    
+  ☐ Complie project into executable file.
+  
 To do:
+  ☐ @bug symlink folders aren't being created properly 
+  ☐ Improve GUI for archive project.
+  ☐ Rename PLACEHOLDER to PROJECT_NAME everywhere
+  ☐ Add option to add license to project when creating it.
 
 Doing:
     ☐ Rewrite GUI-elements to be best practice tkinter.
