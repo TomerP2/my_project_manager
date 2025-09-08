@@ -1,5 +1,7 @@
 Backlog:
   ☐ Complie project into executable file.
+  ☐ Add launch.json to ttd template.
+  ☐ Add option to create virtual environment when creating project.
   
 To do:
   ☐ @bug symlink folders aren't being created properly 
