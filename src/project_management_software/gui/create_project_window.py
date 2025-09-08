@@ -15,7 +15,7 @@ class CreateProjectWindow(tk.Toplevel):
         self.geometry("500x300")
         self.title("Create Project")
 
-        self.settings = self.load_settings()
+        self.settings = self._load_settings()
         self.default_template_dir = self.settings["default templates folder"]
         self.default_directory = self.settings["default projects folder"]
 
@@ -23,20 +23,20 @@ class CreateProjectWindow(tk.Toplevel):
         self.git_var = tk.BooleanVar()
         self.use_obsidian_var = tk.BooleanVar()
 
-        self.create_widgets()
+        self._create_widgets()
 
-    def load_settings(self):
+    def _load_settings(self):
         os.chdir(os.path.dirname(os.path.abspath(__file__)))
         with open(r"../settings.json", "r") as f:
             return json.load(f)
 
-    def browse_directory(self, entry, initial_dir=None):
+    def _browse_directory(self, entry, initial_dir=None):
         directory = filedialog.askdirectory(initialdir=initial_dir)
         if directory:
             entry.delete(0, tk.END)
             entry.insert(0, directory)
 
-    def refresh_template_list(self):
+    def _refresh_template_list(self):
         try:
             updated_folders = [folder.name for folder in Path(self.default_template_dir).iterdir() if folder.is_dir()]
             menu = self.template_dropdown["menu"]
@@ -48,7 +48,7 @@ class CreateProjectWindow(tk.Toplevel):
         except FileNotFoundError:
             messagebox.showerror("Error", "Template directory not found.")
 
-    def on_create_project(self):
+    def _on_create_project(self):
         directory = self.directory_entry.get()
         project_name = self.project_name_entry.get()
         chosen_template = self.selected_template.get()
@@ -68,13 +68,13 @@ class CreateProjectWindow(tk.Toplevel):
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
-    def create_widgets(self):
+    def _create_widgets(self):
         # Directory input
         ttk.Label(self, text="Directory:").grid(row=0, column=0, padx=10, pady=5, sticky="e")
         self.directory_entry = ttk.Entry(self, width=40)
         self.directory_entry.insert(0, self.default_directory)
         self.directory_entry.grid(row=0, column=1, padx=10, pady=5)
-        ttk.Button(self, text="Browse", command=lambda: self.browse_directory(self.directory_entry, self.default_directory)).grid(row=0, column=2, padx=10, pady=5)
+        ttk.Button(self, text="Browse", command=lambda: self._browse_directory(self.directory_entry, self.default_directory)).grid(row=0, column=2, padx=10, pady=5)
 
         # Project name input
         ttk.Label(self, text="Project Name:").grid(row=1, column=0, padx=10, pady=5, sticky="e")
@@ -92,7 +92,7 @@ class CreateProjectWindow(tk.Toplevel):
             self.selected_template.set(template_folders[0])
         self.template_dropdown = ttk.OptionMenu(self, self.selected_template, *template_folders)
         self.template_dropdown.grid(row=2, column=1, padx=10, pady=5)
-        ttk.Button(self, text="Refresh", command=self.refresh_template_list).grid(row=2, column=2, padx=10, pady=5)
+        ttk.Button(self, text="Refresh", command=self._refresh_template_list).grid(row=2, column=2, padx=10, pady=5)
 
         # Git initialization checkbox
         ttk.Checkbutton(self, text="Initialize Git Repository", variable=self.git_var).grid(row=3, column=1, pady=10)
@@ -101,10 +101,4 @@ class CreateProjectWindow(tk.Toplevel):
         ttk.Checkbutton(self, text="Create Obsidian Vault", variable=self.use_obsidian_var).grid(row=4, column=1, pady=10)
 
         # Create project button
-        ttk.Button(self, text="Create Project", command=self.on_create_project).grid(row=5, column=1, pady=20)
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    root.withdraw()  # Hide the root window
-    CreateProjectWindow(root)
-    root.mainloop()
+        ttk.Button(self, text="Create Project", command=self._on_create_project).grid(row=5, column=1, pady=20)
