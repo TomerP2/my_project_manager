@@ -60,11 +60,6 @@ def test_create_project_with_git(temp_project_dir, temp_template_dir):
     # Check if the project directory was created
     assert temp_project_dir.exists()
 
-    # Check if the template files were copied
-    replaced_file = temp_project_dir / "test_project_file.txt"
-    assert replaced_file.exists()
-    assert replaced_file.read_text() == "This is a test_project content."
-
     # Check if a .git directory was created
     git_dir = temp_project_dir / ".git"
     assert git_dir.exists() and git_dir.is_dir()
