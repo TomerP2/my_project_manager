@@ -1,4 +1,0 @@
-Using python and pytest, write a test or multiple tests for {function}. Use pytest best practices. Keep the code simple and don't be too verbose. Make sure to delete any created data during the test.
-
-The test or tests should, at the mininmum, test whether:
-- 
