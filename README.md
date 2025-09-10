@@ -32,11 +32,12 @@ This project aims to create a program that acts as a project manager for my pers
 
 ## How to use
 
-Windows: Download the latest release, run the .exe, done!
-Mac & Linux: Not tested. Might be able to compile the code yourself.
+**Windows**: Download the latest release, run the .exe, done!
+
+**Mac & Linux**: Not tested. Might be able to compile the code yourself.
 
 ## Template folders
 
-See the template folders dir for examples on how to make a template folder.
-All selected template folders will be copy-pasted into the project.
-Any text 'PROJECT_NAME', either in a file/folder name or file content, will be replaced with the user given project name.
+- See the template folders dir for examples on how to make a template folder.
+- All selected template folders will be copy-pasted into the project.
+- Any text 'PROJECT_NAME', either in a file/folder name or file content, will be replaced with the user given project name.
