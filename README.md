@@ -6,6 +6,11 @@ Date: 04/09/2025
 
 This project aims to create a program that acts as a project manager for my personal projects.
 
+## Screenshots
+![Main Window](assets/main_window.png)
+![Project Creation](assets/create_project.png)
+![Archive Feature](assets/archive_project.png)
+
 ## Functions
 
 ### New project creation
@@ -18,11 +23,6 @@ This project aims to create a program that acts as a project manager for my pers
 
 ### Project management
 - Allows user to archive projects, which zips the project and moves it to the archive.
-
-### Upcoming features
-- Allow user to sync project with the template folder, so that changes to the template are reflected in the projects.
-- Allow user to zip projects for sharing. Which automatically removes the .env and creates a .env.example file.
-- Replace text 'AUTHOR', 'EMAIL', and others with input text.
 
 ## How to use
 Windows: Download the latest release, run the .exe, done!
