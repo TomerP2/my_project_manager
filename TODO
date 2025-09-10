@@ -1,19 +1,19 @@
-Backlog:
-  ☐ Add launch.json to ttd template.
-  ☐ Add option to create virtual environment when creating project.
-  ☐ Test copying symlink folders 
-  ☐ Rename PLACEHOLDER to PROJECT_NAME everywhere
-  ☐ Create a virtual enviroment for this project.
-  ☐ Write a tutorial for using project templates.
-  ☐ @bug In template GIS process, the placeholder name in the .jpyter file is replaced which causes errors. 
-  
-To do:
-
 Future features?:
   ☐ Add option to 'add to project' which adds modules to project
   ☐ Add option to add modules to specific places inside project
   ☐ Maybe split core templates and module templates? -> Core templates are placed once. Module templates are placed inside core templates.
   ☐ Add option to have simple script that is executed with template. Not copied over. Could be bash / python. Lets user customize project creation more.
+
+Backlog:
+  ☐ Add launch.json to ttd template.
+  ☐ Add option to create virtual environment when creating project.
+  ☐ Test copying symlink folders 
+  ☐ Create a virtual enviroment for this project.
+  ☐ Write a tutorial for using project templates.
+  
+To do:
+  ☐ Rename PLACEHOLDER to PROJECT_NAME everywhere
+  ☐ @bug In template GIS process, the placeholder name in the .jpyter file is replaced which causes errors. 
 
 Doing:
 
