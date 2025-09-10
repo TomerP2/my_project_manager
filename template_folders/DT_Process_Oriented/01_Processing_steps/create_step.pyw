@@ -44,13 +44,13 @@ def create_processing_step():
     # Copy template folder to new location
     shutil.copytree(template_path, new_folder_path)
 
-    # Walk through the new folder and replace PROJECT_NAME
+    # Walk through the new folder and replace PROCESSING_STEP_NAME
     for root, dirs, files in os.walk(new_folder_path):
-        # Rename directories containing PROJECT_NAME
+        # Rename directories containing PROCESSING_STEP_NAME
         for dir_name in dirs:
-            if 'PROJECT_NAME' in dir_name:
+            if 'PROCESSING_STEP_NAME' in dir_name:
                 old_path = os.path.join(root, dir_name)
-                new_path = os.path.join(root, dir_name.replace('PROJECT_NAME', step_name))
+                new_path = os.path.join(root, dir_name.replace('PROCESSING_STEP_NAME', step_name))
                 os.rename(old_path, new_path)
         
         # Rename files and replace content
@@ -58,8 +58,8 @@ def create_processing_step():
             file_path = os.path.join(root, file_name)
             
             # Rename file if needed
-            if 'PROJECT_NAME' in file_name:
-                new_file_path = os.path.join(root, file_name.replace('PROJECT_NAME', step_name))
+            if 'PROCESSING_STEP_NAME' in file_name:
+                new_file_path = os.path.join(root, file_name.replace('PROCESSING_STEP_NAME', step_name))
                 os.rename(file_path, new_file_path)
                 file_path = new_file_path
             
@@ -68,8 +68,8 @@ def create_processing_step():
                 with open(file_path, 'r', encoding='utf-8') as file:
                     content = file.read()
                 
-                if 'PROJECT_NAME' in content:
-                    content = content.replace('PROJECT_NAME', step_name)
+                if 'PROCESSING_STEP_NAME' in content:
+                    content = content.replace('PROCESSING_STEP_NAME', step_name)
                     with open(file_path, 'w', encoding='utf-8') as file:
                         file.write(content)
 
