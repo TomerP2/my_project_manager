@@ -1,0 +1,285 @@
+{
+  "main": {
+    "id": "daa806b15fd493c3",
+    "type": "split",
+    "children": [
+      {
+        "id": "8346ec46635d65a7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d00cc4cfeed500a6",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b3db95f722fcaeb3",
+    "type": "split",
+    "children": [
+      {
+        "id": "3bf0eeff2366db29",
+        "type": "tabs",
+        "dimension": 73.25925925925925,
+        "children": [
+          {
+            "id": "3f39d8a9a8a07676",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "87f0c67774b7bf90",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "Arcgis deep learning model",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "4c442ccefeeff3e4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "f83fc0ae032b79f9",
+            "type": "leaf",
+            "state": {
+              "type": "msg-handler-search-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "msg-handler-search-view"
+            }
+          }
+        ]
+      },
+      {
+        "id": "dfeca12c33e339b3",
+        "type": "tabs",
+        "dimension": 26.740740740740744,
+        "children": [
+          {
+            "id": "c383b1265934253d",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 0.7132754626224425,
+                  "close": true
+                }
+              },
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          },
+          {
+            "id": "3a8345ceadb23618",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 366.5
+  },
+  "right": {
+    "id": "e6e540e2f77eb850",
+    "type": "split",
+    "children": [
+      {
+        "id": "021eafd63ab9b378",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b4bf543331a7f6ca",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "03_Docs/Tasks.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Tasks"
+            }
+          },
+          {
+            "id": "71b0e50e4525ac4b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "bac2749e2cef06d2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "42dc84caeebb8974",
+            "type": "leaf",
+            "state": {
+              "type": "copilot-chat-view",
+              "state": {},
+              "icon": "message-square",
+              "title": "Copilot"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 398.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-kanban:Create new board": false,
+      "copilot:Open Copilot Chat": false
+    }
+  },
+  "active": "3f39d8a9a8a07676",
+  "lastOpenFiles": [
+    "Docs",
+    "New folder",
+    "Tasks.md",
+    "01_Processing_steps/00_test/output",
+    "01_Processing_steps/00_test/test.ipynb",
+    "01_Processing_steps/00_test",
+    "00_Supplied_data",
+    "00_supplied_data",
+    "01_Processing_steps/00_test/README_test.md",
+    "01_Processing_steps/00_test/output/vectors_WGS84.gpkg",
+    "01_Processing_steps/00_test/output/rasters",
+    "01_Processing_steps/00_test/output/vectors_RDNEW.gpkg",
+    "01_Processing_steps/00_test/output/pointclouds",
+    "03_Docs/Templates/task template.md",
+    "03_Docs/AI/AI Prompts/Translate to English.md",
+    "03_Docs/AI/AI Prompts/Translate to Dutch.md",
+    "03_Docs/AI/AI Prompts/Summarize (English).md",
+    "03_Docs/AI/AI Prompts/Summarize (Dutch).md",
+    "03_Docs/AI/AI Prompts/Simplify (Dutch).md",
+    "03_Docs/AI/AI Prompts/Remove URLs (English).md",
+    "03_Docs/AI/AI Prompts/Remove URLs (Dutch).md",
+    "03_Docs/AI/AI Prompts/Make shorter (Dutch).md",
+    "03_Docs/AI/AI Prompts/Make longer (Dutch).md",
+    "03_Docs/AI/AI Prompts/Make longer (English).md",
+    "03_Docs/AI/AI Prompts/Make shorter (English).md",
+    "03_Docs/AI/AI Prompts/Generate table of contents (English).md",
+    "03_Docs/AI/AI Prompts/Generate table of contents (Dutch).md",
+    "03_Docs/AI/AI Prompts/Generate glossary (English).md",
+    "03_Docs/AI/AI Prompts/Generate glossary (Dutch).md",
+    "03_Docs/AI/AI Prompts/Fix grammar and spelling (Dutch).md",
+    "03_Docs/AI/AI Prompts/Fix grammar and spelling (English).md",
+    "03_Docs/AI/AI Prompts/Explain like I am 5.md",
+    "03_Docs/AI/AI Conversations/Make_a_copy_of_[[Translate_to_Dutch]],_rename_it_to@20250731_134619.md",
+    "03_Docs/AI/AI Prompts/Simplify (English).md",
+    "03_Docs/AI/AI Prompts/Fix grammar and spelling (English) 1.md",
+    "03_Docs/AI/AI Prompts/Emojify.md",
+    "Daily Notes/attachments/Pasted image 20250515140738.png",
+    "Daily Notes/attachments/Pasted image 20250515140642.png",
+    "Daily Notes/attachments/Pasted image 20250515135351.png",
+    "Projects/Active/Begraafplaatsen/AI-Projects/attachments/Pasted image 20250514132554.png",
+    "Projects/Active/Begraafplaatsen/AI-Projects/attachments/Pasted image 20250514132020.png",
+    "Projects/Active/Begraafplaatsen/AI-Projects/attachments/Pasted image 20250514131935.png",
+    "Projects/Active/Begraafplaatsen/AI-Projects/attachments/Pasted image 20250514131917.png",
+    "Projects/Active/Begraafplaatsen/AI-Projects/attachments/Pasted image 20250514131906.png",
+    "Projects/Active/Begraafplaatsen/AI-Projects/Graven-Panoramas AI.canvas",
+    "Projects/Active/Begraafplaatsen/Tools/attachments/Pasted image 20250429131954.png",
+    "Projects/Active/Begraafplaatsen/Roerdalen/attachments/Pasted image 20250415105152.png",
+    "Begraafplaatsen/Graven Grafnummers verwerken tool.canvas",
+    "Untitled 1.canvas"
+  ]
+}
