@@ -12,7 +12,7 @@ Backlog:
   ☐ Write a tutorial for using project templates.
   
 To do:
-  ☐ Rename PLACEHOLDER to PROJECT_NAME everywhere
+  ☐ Rename PROJECT_NAME to PROJECT_NAME everywhere
   ☐ @bug In template GIS process, the placeholder name in the .jpyter file is replaced which causes errors. 
 
 Doing:

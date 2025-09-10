@@ -44,13 +44,13 @@ def create_processing_step():
     # Copy template folder to new location
     shutil.copytree(template_path, new_folder_path)
 
-    # Walk through the new folder and replace PLACEHOLDER
+    # Walk through the new folder and replace PROJECT_NAME
     for root, dirs, files in os.walk(new_folder_path):
-        # Rename directories containing PLACEHOLDER
+        # Rename directories containing PROJECT_NAME
         for dir_name in dirs:
-            if 'PLACEHOLDER' in dir_name:
+            if 'PROJECT_NAME' in dir_name:
                 old_path = os.path.join(root, dir_name)
-                new_path = os.path.join(root, dir_name.replace('PLACEHOLDER', step_name))
+                new_path = os.path.join(root, dir_name.replace('PROJECT_NAME', step_name))
                 os.rename(old_path, new_path)
         
         # Rename files and replace content
@@ -58,8 +58,8 @@ def create_processing_step():
             file_path = os.path.join(root, file_name)
             
             # Rename file if needed
-            if 'PLACEHOLDER' in file_name:
-                new_file_path = os.path.join(root, file_name.replace('PLACEHOLDER', step_name))
+            if 'PROJECT_NAME' in file_name:
+                new_file_path = os.path.join(root, file_name.replace('PROJECT_NAME', step_name))
                 os.rename(file_path, new_file_path)
                 file_path = new_file_path
             
@@ -68,8 +68,8 @@ def create_processing_step():
                 with open(file_path, 'r', encoding='utf-8') as file:
                     content = file.read()
                 
-                if 'PLACEHOLDER' in content:
-                    content = content.replace('PLACEHOLDER', step_name)
+                if 'PROJECT_NAME' in content:
+                    content = content.replace('PROJECT_NAME', step_name)
                     with open(file_path, 'w', encoding='utf-8') as file:
                         file.write(content)
 

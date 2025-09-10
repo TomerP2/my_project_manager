@@ -1,4 +1,4 @@
-# PLACEHOLDER
+# PROJECT_NAME
 
 ## Info
 Author: Tomer Peled (Tomer.Peled@Wur.nl)

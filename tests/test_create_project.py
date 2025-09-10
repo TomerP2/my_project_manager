@@ -20,7 +20,7 @@ def temp_template_dir(tmp_path):
     """Fixture to create a temporary template directory."""
     template_dir = tmp_path / "template"
     template_dir.mkdir()
-    (template_dir / "PLACEHOLDER_file.txt").write_text("This is a PLACEHOLDER content.")
+    (template_dir / "PROJECT_NAME_file.txt").write_text("This is a PROJECT_NAME content.")
     yield template_dir
     if template_dir.exists():
         shutil.rmtree(template_dir)

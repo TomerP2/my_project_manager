@@ -11,7 +11,7 @@ This project aims to create a program that acts as a project manager for my pers
 ### New project creation
 - Create a new project from a chosen template folder.
 - Template folder: Contains folders and files.
-- Any text 'PLACEHOLDER', either in a file/folder name or file content, will be replaced with the user given project name.
+- Any text 'PROJECT_NAME', either in a file/folder name or file content, will be replaced with the user given project name.
 - Any text 'CURRENT_DATE', either in a file/folder name or file content, will be replaced with the current date.
 - Option to create an empty .git repository in the project folder
 - Option to create an obsidian vault in the project folder

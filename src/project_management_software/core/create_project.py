@@ -34,37 +34,37 @@ def create_project(project_path: Path,
             raise FileNotFoundError(f"Template directory '{template_dir}' not found.")
         shutil.copytree(template_dir, project_path, dirs_exist_ok=True)
     
-    # === Rename folders containing 'PLACEHOLDER' (deepest first) ===
+    # === Rename folders containing 'PROJECT_NAME' (deepest first) ===
     for folder in sorted(project_path.rglob("*"), key=lambda p: -p.relative_to(project_path).parts.__len__()):
-        if folder.is_dir() and "PLACEHOLDER" in folder.name:
-            new_name = folder.name.replace("PLACEHOLDER", project_path.name)
+        if folder.is_dir() and "PROJECT_NAME" in folder.name:
+            new_name = folder.name.replace("PROJECT_NAME", project_path.name)
             folder.rename(folder.with_name(new_name))
 
-    # === Rename files containing 'PLACEHOLDER' ===
+    # === Rename files containing 'PROJECT_NAME' ===
     for file in project_path.rglob("*"):
-        if file.is_file() and "PLACEHOLDER" in file.name:
-            new_name = file.name.replace("PLACEHOLDER", project_path.name)
+        if file.is_file() and "PROJECT_NAME" in file.name:
+            new_name = file.name.replace("PROJECT_NAME", project_path.name)
             file.rename(file.with_name(new_name))
             
-    # === Replace 'PLACEHOLDER' in all files ===
+    # === Replace 'PROJECT_NAME' in all files ===
     for file in project_path.rglob("*"):
         if file.is_file():
             try:
                 with open(file, "r", encoding="utf-8") as f:
                     content = f.read()
-                content = content.replace("PLACEHOLDER", project_path.name)
+                content = content.replace("PROJECT_NAME", project_path.name)
                 with open(file, "w", encoding="utf-8") as f:
                     f.write(content)
             except UnicodeDecodeError:
                 # Skip binary files
                 continue
             
-    # === Replace 'PROJECT_PATH_PLACEHOLDER' in .env file ===
+    # === Replace 'PROJECT_PATH_PROJECT_NAME' in .env file ===
     env_example_path = project_path / ".env"
     if env_example_path.exists():
         with open(env_example_path, "r") as file:
             content = file.read()
-        content = content.replace("PROJECT_PATH_PLACEHOLDER", str(project_path.resolve()).replace("\\", "/"))
+        content = content.replace("PROJECT_PATH_PROJECT_NAME", str(project_path.resolve()).replace("\\", "/"))
         with open(env_example_path, "w") as file:
             file.write(content)
                     
