@@ -13,7 +13,7 @@ def temp_project_dir(tmp_path):
     project_dir = tmp_path / "test_project"
     yield project_dir
     if project_dir.exists():
-        shutil.rmtree(project_dir)
+        os.system('rmdir /S /Q "{}"'.format(str(project_dir)))
 
 @pytest.fixture
 def temp_template_dir(tmp_path):
@@ -23,7 +23,7 @@ def temp_template_dir(tmp_path):
     (template_dir / "PROJECT_NAME_file.txt").write_text("This is a PROJECT_NAME content.")
     yield template_dir
     if template_dir.exists():
-        shutil.rmtree(template_dir)
+        os.system('rmdir /S /Q "{}"'.format(str(template_dir)))
 
 def test_create_project(temp_project_dir, temp_template_dir):
     """Test the create_project function."""
