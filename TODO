@@ -3,13 +3,17 @@ Backlog:
   ☐ Add option to create virtual environment when creating project.
   ☐ Test copying symlink folders 
   ☐ Rename PLACEHOLDER to PROJECT_NAME everywhere
-  ☐ Add option to add license to project when creating it.
   ☐ Create a virtual enviroment for this project.
   ☐ Write a tutorial for using project templates.
   ☐ @bug In template GIS process, the placeholder name in the .jpyter file is replaced which causes errors. 
   
 To do:
-  ☐ Remake templates to be more modular. 
+
+Future features?:
+  ☐ Add option to 'add to project' which adds modules to project
+  ☐ Add option to add modules to specific places inside project
+  ☐ Maybe split core templates and module templates? -> Core templates are placed once. Module templates are placed inside core templates.
+  ☐ Add option to have simple script that is executed with template. Not copied over. Could be bash / python. Lets user customize project creation more.
 
 Doing:
 
@@ -18,6 +22,8 @@ Paused:
 Blocked:
 
 Archive:
+  ✔ Add option to add license to project when creating it. @done(25-09-10 12:30) @project(Backlog)
+  ✔ Remake templates to be more modular. @done(25-09-10 12:30) @project(To do)
   ✔ Think of a way to give users the project templates including empty files. @done(25-09-08 21:29) @project(Backlog)
   ✔ @bug intiating git test is failing @done(25-09-08 21:29) @project(To do)
   ✔ Rewrite create_project_window to use checkboxes instead of dropdown for templates. @done(25-09-08 21:29) @project(To do)
