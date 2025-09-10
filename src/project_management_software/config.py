@@ -10,10 +10,9 @@ SETTINGS_PATH = resource_path("settings.json")
 
 # Define the default settings
 DEFAULT_SETTINGS = {
-    "default projects folder": "C:/Projects",
-    "default templates folder": "C:/template_folders",
-    "default archive folder": "C:/Archive",
-    "Obsidian vault template": "C:/template_folders/Obsidian_vault_template"
+    "default projects folder": "./Projects",
+    "default templates folder": "./template_folders",
+    "default archive folder": "./Archive",
 }
 
 # Check if settings.json exists, if not, create it with default settings
