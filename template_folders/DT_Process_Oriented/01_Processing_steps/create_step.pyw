@@ -9,16 +9,9 @@ from dotenv import dotenv_values
 
 env_vars = dotenv_values()
 
-def create_processing_step():
+def create_processing_step(step_name: str):
     # Set working directory to the script's directory
     os.chdir(os.path.dirname(os.path.abspath(sys.argv[0])))
-    
-    # Create root window and hide it
-    root = tk.Tk()
-    root.withdraw()
-
-    # Show input dialog
-    step_name = simpledialog.askstring("New Processing Step", "Enter the name of the new processing step:")
     
     # Exit if user cancels
     if not step_name:
@@ -86,4 +79,15 @@ def create_processing_step():
     print(f"Created new processing step: {new_folder_name}")
 
 if __name__ == "__main__":
-    create_processing_step()
+    # If script was called with an argument, use it as step name
+    try:
+        step_name = sys.argv[1]
+        
+    # Else, show input dialog
+    except IndexError: 
+        # Create root window and hide it
+        root = tk.Tk()
+        root.withdraw()
+        step_name = str(simpledialog.askstring("New Processing Step", "Enter the name of the new processing step:"))
+    
+    create_processing_step(step_name)
